@@ -18,7 +18,6 @@ services:
     volumes:
       - ./data:/data
     environment:
-      KOMPANION_AUTH_STORAGE: 'memory'
       KOMPANION_PG_URL: 'postgres://user:pass@postgres:5432/postgres'
       KOMPANION_BSTORAGE_PATH: '/data/books/'
       KOMPANION_AUTH_USERNAME: 'user'

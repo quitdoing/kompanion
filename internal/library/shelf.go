@@ -153,7 +153,7 @@ func (uc *BookShelf) DeleteBook(ctx context.Context, bookID string) error {
 	
 	err = uc.deleteCover(ctx, bookID)
 	if err != nil {
-		return fmt.Errorf("BookShelf - DeleteBookCover - s.storage.Delete: %w", err)
+		return fmt.Errorf("BookShelf - deleteCover - s.repo.Delete: %w", err)
 	}
 
 	err = uc.repo.Delete(ctx, book)
@@ -229,7 +229,7 @@ func (uc *BookShelf) deleteCover(ctx context.Context, bookID string) error {
 		return fmt.Errorf("BookShelf - deleteCover - s.repo.Get: %w", err)
 	}
 	if book.CoverPath == "" {
-		return fmt.Errorf("BookShelf - deleteCover - no cover")
+		return nil
 	}
 	err = uc.storage.Delete(ctx, book.CoverPath)
 	if err != nil {
